@@ -19,7 +19,7 @@
     <release.version>11</release.version>
     <micronaut.version>3.4.3</micronaut.version>
     <exec.mainClass>eu.xtrf.custom.internal.Application</exec.mainClass>
-    <groovyVersion>3.0.9</groovyVersion>
+    <groovyVersion>3.0.10</groovyVersion>
     <micronaut.runtime>netty</micronaut.runtime>
   </properties>
 
@@ -39,6 +39,12 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy</artifactId>
+      <version>${groovyVersion}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-json</artifactId>
       <version>${groovyVersion}</version>
       <scope>compile</scope>
     </dependency>
@@ -113,8 +119,19 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>3.2.1</version>
+        <configuration>
+          <to>
+            <image>gcr.io/brep-playground/xtrf-pubsub-events</image>
+          </to>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>io.micronaut.build</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
+        <version>3.2.3</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
